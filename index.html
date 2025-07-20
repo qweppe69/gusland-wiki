@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" >
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,45 +26,24 @@
       display: flex;
       flex-direction: column;
     }
-
-    .topbar-container {
+    .topbar {
+      height: 50px;
+      background-color: rgba(30,30,30,0.85);
+      backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       padding: 0 1rem;
-      background-color: rgba(30,30,30,0.85);
-      backdrop-filter: blur(8px);
-      height: 64px;
       gap: 1rem;
-      border-bottom: 1px solid #555;
       box-sizing: border-box;
+      border-bottom: 1px solid #555;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      user-select: none;
-      flex-shrink: 0;
-    }
-    .logo img {
-      width: 40px;
-      height: 40px;
-    }
-    .logo span {
-      font-weight: 700;
-      font-size: 1.75rem;
-      color: #facc15;
-      white-space: nowrap;
-    }
-
     .search-input {
       flex-grow: 1;
-      max-width: 320px;
       background: #222;
       border: none;
       border-radius: 0.5rem;
       color: #facc15;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 1rem;
       font-size: 1rem;
       transition: background-color 0.3s;
     }
@@ -79,13 +58,8 @@
     .content-wrapper {
       flex-grow: 1;
       display: flex;
-      height: calc(100vh - 64px);
+      height: calc(100vh - 50px);
       overflow: hidden;
-      justify-content: center; /* центрируем по горизонтали */
-      padding: 2rem;
-      box-sizing: border-box;
-      gap: 1.5rem;
-      background-color: transparent;
     }
 
     /* Левое меню */
@@ -95,24 +69,21 @@
       backdrop-filter: blur(8px);
       padding: 2rem 1.5rem;
       box-sizing: border-box;
-      border-radius: 0.5rem;
-      border: 1px solid #555;
+      border-right: 1px solid #555;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
     }
-    aside .logo-small {
+    aside .logo {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin-bottom: 2rem;
       user-select: none;
     }
-    aside .logo-small img {
+    aside .logo img {
       width: 40px;
       height: 40px;
     }
-    aside .logo-small span {
+    aside .logo span {
       font-weight: 700;
       font-size: 1.75rem;
       color: #facc15;
@@ -136,15 +107,14 @@
 
     /* Основной контент (по центру) */
     main {
-      max-width: 720px;
+      flex-grow: 1;
       background-color: rgba(30,30,30,0.8);
       backdrop-filter: blur(8px);
       padding: 2.5rem 3rem;
       overflow-y: auto;
+      max-width: 800px;
       box-sizing: border-box;
       color: #ddd;
-      border-radius: 0.5rem;
-      flex-shrink: 0;
     }
     main h1 {
       font-size: 3rem;
@@ -165,11 +135,9 @@
       backdrop-filter: blur(8px);
       padding: 2rem 1.5rem;
       box-sizing: border-box;
-      border-radius: 0.5rem;
-      border: 1px solid #555;
+      border-left: 1px solid #555;
       overflow-y: auto;
       color: #ccc;
-      flex-shrink: 0;
     }
     aside.right-sidebar h2 {
       font-weight: 700;
@@ -245,11 +213,8 @@
   </style>
 </head>
 <body>
-  <div class="topbar-container">
-    <div class="logo">
-      <img src="/images/goose-icon.png" alt="Гусь" />
-      <span>ГусЛенд</span>
-    </div>
+  <div class="topbar">
+    <button class="menu-toggle" aria-label="Toggle menu" style="display:none;">☰</button>
     <input
       type="search"
       class="search-input"
@@ -260,6 +225,10 @@
 
   <div class="content-wrapper">
     <aside>
+      <div class="logo">
+        <img src="/images/goose-icon.png" alt="Гусь" />
+        <span>ГусЛенд</span>
+      </div>
       <nav>
         <a href="index.html" class="active">🏠 Новичкам</a>
         <a href="rules.html">📜 Правила</a>
@@ -281,5 +250,15 @@
       </ul>
     </aside>
   </div>
+
+  <script>
+    // Пример для кнопки меню на мобильных (если нужно)
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector("aside");
+
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+  </script>
 </body>
 </html>
