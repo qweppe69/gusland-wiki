@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ГусЛенд</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="icon" href="/favicon.ico">
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
   <style>
     body::before {
       content: "";
@@ -22,10 +24,19 @@
     }
     body {
       color: #e0e0e0;
+      backdrop-filter: blur(4px);
     }
     .backdrop {
       backdrop-filter: blur(8px);
       background-color: rgba(30, 30, 30, 0.8);
+    }
+    a {
+      color: #facc15;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #fde047;
+      text-decoration: none;
     }
     .sidebar-link {
       display: block;
@@ -41,36 +52,29 @@
   </style>
 </head>
 <body class="font-sans">
-
   <div class="flex min-h-screen">
-
     <!-- Sidebar -->
-    <aside class="w-64 fixed h-full backdrop p-6 space-y-4">
+    <aside class="w-80 fixed h-full backdrop p-6 space-y-4">
       <div class="flex items-center space-x-3">
-        <img src="images/goose-icon.png" alt="Гусь" class="w-10 h-10">
+        <img src="/images/goose-icon.png" alt="Гусь" class="w-10 h-10" />
         <span class="text-xl font-bold text-yellow-300">ГусЛенд</span>
       </div>
-      <nav class="space-y-2 mt-6">
-        <a href="index.html" class="sidebar-link">🏠 Главная</a>
+      <nav class="mt-6 space-y-2 text-gray-100">
+        <a href="index.html" class="sidebar-link">🏠 Новичкам</a>
         <a href="rules.html" class="sidebar-link">📜 Правила</a>
-        <a href="start.html" class="sidebar-link">🚪 Как начать</a>
+        <a href="start.html" class="sidebar-link">🚪 Начать играть</a>
       </nav>
     </aside>
 
     <!-- Main content -->
-    <main class="flex-1 ml-64 p-10 backdrop">
-      <h1 class="text-3xl font-bold text-yellow-400 mb-6">Добро пожаловать на вики ГусЛенда</h1>
-      <p class="mb-4 text-gray-200">Это официальная вики нашего лампового сервера.</p>
+    <main class="ml-80 flex-1 backdrop p-10 max-w-5xl mx-auto">
+      <h1 class="text-4xl font-bold text-yellow-400 mb-6">Добро пожаловать на вики ГусЛенда</h1>
+      <p class="mb-4 text-gray-200">
+        Это официальная вики нашего лампового сервера.
+      </p>
 
-      <h2 class="text-2xl font-semibold mt-8 mb-2 text-yellow-300">Что ты можешь изучить:</h2>
-      <ul class="list-disc list-inside space-y-1 text-gray-100">
-        <li><a href="rules.html">Правила сервера</a></li>
-        <li><a href="start.html">Как начать играть</a></li>
-      </ul>
-
+      <img src="/images/goose-bread.png" alt="Гусь и булка" class="mt-10 w-40" />
     </main>
-
   </div>
-
 </body>
 </html>
