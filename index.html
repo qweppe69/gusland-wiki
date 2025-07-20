@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ГусЛенд</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     body::before {
       content: "";
@@ -20,83 +17,248 @@
       z-index: -1;
     }
     body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
       color: #e0e0e0;
+      background: transparent;
       backdrop-filter: blur(4px);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    .backdrop {
+    .topbar {
+      height: 50px;
+      background-color: rgba(30,30,30,0.85);
       backdrop-filter: blur(8px);
-      background-color: rgba(30, 30, 30, 0.85);
-    }
-    a {
-      color: #facc15;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #fde047;
-      text-decoration: none;
-    }
-    .sidebar-link {
-      display: block;
-      color: #e0e0e0;
-      transition: background-color 0.2s, color 0.2s;
-      padding: 1rem 1.5rem;
-      border-radius: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-    .sidebar-link:hover {
-      background-color: rgba(253, 224, 71, 0.15);
-      color: #fde047;
-    }
-    aside {
-      width: 256px;
-      position: fixed;
-      height: 100%;
-      backdrop-filter: blur(8px);
-      background-color: rgba(30, 30, 30, 0.85);
-      padding: 24px 24px 24px 32px;
-      left: 20px;
-      top: 0;
-      border-radius: 0 12px 12px 0;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      gap: 1rem;
       box-sizing: border-box;
+      border-bottom: 1px solid #555;
     }
+    .search-input {
+      flex-grow: 1;
+      background: #222;
+      border: none;
+      border-radius: 0.5rem;
+      color: #facc15;
+      padding: 0.4rem 1rem;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .search-input::placeholder {
+      color: #bfa74f;
+    }
+    .search-input:focus {
+      outline: none;
+      background-color: #333;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      display: flex;
+      height: calc(100vh - 50px);
+      overflow: hidden;
+    }
+
+    /* Левое меню */
+    aside {
+      width: 280px;
+      background-color: rgba(30,30,30,0.85);
+      backdrop-filter: blur(8px);
+      padding: 2rem 1.5rem;
+      box-sizing: border-box;
+      border-right: 1px solid #555;
+      overflow-y: auto;
+    }
+    aside .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+    aside .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    aside .logo span {
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #facc15;
+    }
+    nav a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #e0e0e0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.4rem;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover,
+    nav a.active {
+      background-color: #fde047;
+      color: #1a1a1a;
+    }
+
+    /* Основной контент (по центру) */
     main {
-      margin-left: 296px; /* 256 + 40 */
+      flex-grow: 1;
+      background-color: rgba(30,30,30,0.8);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem 3rem;
+      overflow-y: auto;
+      max-width: 800px;
+      box-sizing: border-box;
+      color: #ddd;
     }
     main h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 800;
       color: #fde047;
       margin-bottom: 1rem;
     }
     main p {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       line-height: 1.6;
-      color: #d6d6d6;
+      color: #ccc;
+    }
+
+    /* Правый сайдбар — содержание страницы */
+    aside.right-sidebar {
+      width: 240px;
+      background-color: rgba(30,30,30,0.85);
+      backdrop-filter: blur(8px);
+      padding: 2rem 1.5rem;
+      box-sizing: border-box;
+      border-left: 1px solid #555;
+      overflow-y: auto;
+      color: #ccc;
+    }
+    aside.right-sidebar h2 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #facc15;
+    }
+    aside.right-sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    aside.right-sidebar ul li {
+      margin-bottom: 0.5rem;
+    }
+    aside.right-sidebar ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    aside.right-sidebar ul li a:hover {
+      color: #fde047;
+    }
+
+    /* Скроллы */
+    aside, main {
+      scrollbar-width: thin;
+      scrollbar-color: #facc15 transparent;
+    }
+    aside::-webkit-scrollbar,
+    main::-webkit-scrollbar {
+      width: 8px;
+    }
+    aside::-webkit-scrollbar-thumb,
+    main::-webkit-scrollbar-thumb {
+      background-color: #facc15;
+      border-radius: 4px;
+    }
+    aside::-webkit-scrollbar-track,
+    main::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Адаптив */
+    @media (max-width: 1024px) {
+      aside.right-sidebar {
+        display: none;
+      }
+      main {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 768px) {
+      aside {
+        position: fixed;
+        z-index: 10;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      aside.open {
+        transform: translateX(0);
+      }
+      .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #facc15;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
     }
   </style>
 </head>
-<body class="font-sans">
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
+<body>
+  <div class="topbar">
+    <button class="menu-toggle" aria-label="Toggle menu" style="display:none;">☰</button>
+    <input
+      type="search"
+      class="search-input"
+      placeholder="Поиск по сайту..."
+      aria-label="Поиск по сайту"
+    />
+  </div>
+
+  <div class="content-wrapper">
     <aside>
-      <div class="flex items-center space-x-4">
-        <img src="/images/goose-icon.png" alt="Гусь" class="w-12 h-12" />
-        <span class="text-2xl font-bold text-yellow-300 select-none">ГусЛенд</span>
+      <div class="logo">
+        <img src="/images/goose-icon.png" alt="Гусь" />
+        <span>ГусЛенд</span>
       </div>
-      <nav class="mt-8 space-y-4 text-gray-100">
-        <a href="index.html" class="sidebar-link">🏠 Новичкам</a>
-        <a href="rules.html" class="sidebar-link">📜 Правила</a>
-        <a href="start.html" class="sidebar-link">🚪 Начать играть</a>
+      <nav>
+        <a href="index.html" class="active">🏠 Новичкам</a>
+        <a href="rules.html">📜 Правила</a>
+        <a href="start.html">🚪 Начать играть</a>
       </nav>
     </aside>
 
-    <!-- Main content -->
-    <main class="backdrop p-10">
+    <main>
       <h1>Добро пожаловать в ГусЛенд</h1>
       <p>Это официальный сервер.</p>
     </main>
+
+    <aside class="right-sidebar">
+      <h2>Содержание страницы</h2>
+      <ul>
+        <li><a href="#section1">Раздел 1</a></li>
+        <li><a href="#section2">Раздел 2</a></li>
+        <li><a href="#section3">Раздел 3</a></li>
+      </ul>
+    </aside>
   </div>
+
+  <script>
+    // Пример для кнопки меню на мобильных (если нужно)
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector("aside");
+
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+  </script>
 </body>
 </html>
