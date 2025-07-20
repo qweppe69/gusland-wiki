@@ -1,57 +1,97 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ГусЛенд — Начать играть</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://i.pinimg.com/1200x/51/c9/de/51c9de1f883159047ae82628dd33fb6a.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4) blur(8px);
+      z-index: -1;
+    }
+    body {
+      color: #e0e0e0;
+      backdrop-filter: blur(4px);
+    }
+    .backdrop {
+      backdrop-filter: blur(8px);
+      background-color: rgba(30, 30, 30, 0.8);
+    }
+    a {
+      color: #facc15;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #fde68a;
+    }
+    .search-input {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
 </head>
-<body>
-  <div class="background-blur"></div>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="logo">
-        <img src="logo.png" alt="GusLand Logo" />
-        <span>ГусЛенд</span>
+<body class="font-sans">
+
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-72 backdrop p-6 space-y-4 relative left-10">
+      <div class="flex items-center space-x-3">
+        <img src="/images/goose-icon.png" alt="Гусь" class="w-10 h-10">
+        <span class="text-xl font-bold text-yellow-300">ГусЛенд</span>
       </div>
-      <nav class="nav">
-        <a href="index.html">Новичкам</a>
-        <a href="rules.html">Правила</a>
-        <a href="start.html" class="active">Начать играть</a>
+      <input type="text" placeholder="Поиск..." class="w-full px-3 py-1 rounded-md text-sm text-white search-input">
+      <nav class="space-y-2 text-gray-100 mt-4">
+        <a href="index.html" class="block text-lg">🏠 Новичкам</a>
+        <a href="rules.html" class="block text-lg">📜 Правила</a>
+        <a href="start.html" class="block text-lg">🚪 Начать играть</a>
       </nav>
     </aside>
 
-    <div class="content-area">
-      <header class="topbar">
-        <input type="text" placeholder="Поиск по сайту..." />
-      </header>
+    <!-- Main content -->
+    <main class="flex-1 backdrop p-10 max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-yellow-400 mb-6">Начать играть</h1>
 
-      <main>
-        <h1>Как начать играть на ГусЛенд</h1>
-        <p>Добро пожаловать на сервер ГусЛенд! Ниже ты найдёшь всё необходимое, чтобы начать своё приключение.</p>
+      <p class="mb-4 text-gray-200">
+        Для игры на <strong>ГусЛенде</strong> лицензия Minecraft <strong>не требуется</strong> — вы можете играть как с лицензионным лаунчером, так и с пиратским. Главное — чтобы ваш клиент был версии <strong>1.20.1</strong>.
+      </p>
 
-        <h2>1. Версия Minecraft</h2>
-        <p>Для подключения к серверу используй Minecraft Java Edition версии 1.20.1. Это стабильная версия, поддерживаемая сервером.</p>
+      <h2 class="text-2xl font-semibold mt-6 mb-2 text-yellow-300">Шаги:</h2>
+      <ul class="list-decimal list-inside space-y-1 text-gray-100">
+        <li>Установите Minecraft 1.20.1 (можно через TLauncher, Prism, или любой другой лаунчер).</li>
+        <li>Добавьте наш сервер в список:
+          <ul class="list-disc list-inside ml-6">
+            <li><strong>IP:</strong> 185.9.145.8:38937</li>
+          </ul>
+        </li>
+        <li>Зайдите и начните своё выживание вместе с другими игроками!</li>
+      </ul>
 
-        <h2>2. IP сервера</h2>
-        <p>Подключись к нашему серверу, указав в клиенте Minecraft следующий IP адрес:</p>
-        <pre>185.9.145.8:38937</pre>
+      <h2 class="text-2xl font-semibold mt-8 mb-2 text-yellow-300">Выбор лаунчера</h2>
+      <p class="mb-4 text-gray-200">Для игры вы можете использовать любой удобный лаунчер. Мы рекомендуем:</p>
+      <ul class="list-disc list-inside space-y-1 text-gray-100">
+        <li><a href="https://tlauncher.org/" target="_blank">TLauncher</a> — простой и удобный лаунчер без лицензии.</li>
+        <li><a href="https://prismlauncher.org/" target="_blank">Prism Launcher</a> — продвинутый лаунчер с возможностью установки модов.</li>
+      </ul>
 
-        <h2>3. Первый вход</h2>
-        <p>После подключения ты появишься в стартовой зоне. Следуй инструкциям, чтобы выбрать направление и начать исследование мира.</p>
-
-        <h2>4. Общие советы</h2>
-        <ul>
-          <li>Прочитай <a href="rules.html">правила сервера</a>.</li>
-          <li>Уважай других игроков — наш сервер дружелюбный и ламповый.</li>
-          <li>Не забудь заглянуть в раздел плагинов, чтобы понять механику сервера.</li>
-          <li>Если возникнут вопросы — обратись к модераторам или в Discord.</li>
-        </ul>
-
-        <h2>5. Discord</h2>
-        <p>Для общения, новостей и обратной связи используй наш Discord-сервер (ссылка будет доступна позже).</p>
-      </main>
-    </div>
+      <h2 class="text-2xl font-semibold mt-8 mb-2 text-yellow-300">Дополнительные советы</h2>
+      <ul class="list-disc list-inside space-y-1 text-gray-100">
+        <li>Настройте ник перед входом в лаунчере — он будет вашим игровым именем.</li>
+        <li>Если лаунчер спрашивает сервер-версию — выберите <strong>release 1.20.1</strong>.</li>
+        <li>Не используйте моды, которые могут считаться читами (x-ray и др.).</li>
+      </ul>
+    </main>
   </div>
+
 </body>
 </html>
