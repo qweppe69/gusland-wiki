@@ -293,52 +293,63 @@
       </div>
     </section>
 
-    <section class="faq-section">
-    <div class="faq-left">
-      <h2>Часто задаваемые вопросы</h2>
+    <!-- FAQ Section -->
+<section class="py-12 bg-white">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-3xl font-bold text-center mb-8">Часто задаваемые вопросы</h2>
 
-      <div class="faq-item">
-        <button class="faq-question">Что мы за сервер? <span class="arrow">▼</span></button>
-        <div class="faq-answer">
-          <p>Ответ — (впиши свой).</p>
-        </div>
-      </div>
+    <div class="space-y-4">
+      <details class="border border-gray-200 rounded-lg p-4 shadow-sm">
+        <summary class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+          Что мы за сервер?
+          <span class="ml-2 text-gray-500">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-600">Ответ я потом сам напишу</p>
+      </details>
 
-      <div class="faq-item">
-        <button class="faq-question">Какая версия? <span class="arrow">▼</span></button>
-        <div class="faq-answer">
-          <p>1.20.1</p>
-        </div>
-      </div>
+      <details class="border border-gray-200 rounded-lg p-4 shadow-sm">
+        <summary class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+          Какая версия?
+          <span class="ml-2 text-gray-500">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-600">Ответ</p>
+      </details>
 
-      <div class="faq-item">
-        <button class="faq-question">Нужна лицензия? <span class="arrow">▼</span></button>
-        <div class="faq-answer">
-          <p>Нет, можно играть без лицензии.</p>
-        </div>
-      </div>
+      <details class="border border-gray-200 rounded-lg p-4 shadow-sm">
+        <summary class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+          Нужна лицензия?
+          <span class="ml-2 text-gray-500">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-600">Ответ</p>
+      </details>
 
-      <div class="faq-item">
-        <button class="faq-question">Как попасть на сервер? <span class="arrow">▼</span></button>
-        <div class="faq-answer">
-          <p>IP: 185.9.145.8:38937</p>
-        </div>
-      </div>
+      <details class="border border-gray-200 rounded-lg p-4 shadow-sm">
+        <summary class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+          Как попасть на сервер?
+          <span class="ml-2 text-gray-500">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-600">Ответ</p>
+      </details>
 
-      <div class="faq-item">
-        <button class="faq-question">Почему ГусЛенд? <span class="arrow">▼</span></button>
-        <div class="faq-answer">
-          <p>Ответ — (впиши свой).</p>
-        </div>
-      </div>
+      <details class="border border-gray-200 rounded-lg p-4 shadow-sm">
+        <summary class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+          Почему ГусЛенд?
+          <span class="ml-2 text-gray-500">▼</span>
+        </summary>
+        <p class="mt-2 text-gray-600">Ответ</p>
+      </details>
     </div>
 
-    <div class="faq-discord">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Icon">
-      <h3>Есть ещё вопросы?</h3>
-      <p><a href="https://discord.gg/rwDsBFSJrb" target="_blank">Заходи к нам в Discord!</a></p>
+    <!-- Discord Invite Block -->
+    <div class="mt-10 bg-blue-50 border border-blue-200 rounded-lg p-6 flex items-center justify-between">
+      <div>
+        <h3 class="text-xl font-semibold text-blue-800">Есть ещё вопросы?</h3>
+        <p class="text-blue-600">Заходи к нам в <a href="https://discord.gg/rwDsBFSJrb" class="underline font-medium hover:text-blue-800">Discord!</a></p>
+      </div>
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" class="w-12 h-12">
     </div>
-  </section>
+  </div>
+</section>
 
   <script>
     document.querySelectorAll('.faq-question').forEach(button => {
