@@ -6,6 +6,95 @@
   <title>GusLand</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    .faq-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4rem;
+      gap: 3rem;
+    }
+
+    .faq-left {
+      flex: 2;
+    }
+
+    .faq-left h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.5rem;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      transition: 0.3s;
+    }
+
+    .faq-question:hover {
+      color: #facc15;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    .faq-item.active .arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-discord {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .faq-discord img {
+      width: 48px;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-discord h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-discord a {
+      color: #60a5fa;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .faq-discord a:hover {
+      color: #3b82f6;
+    }
+    
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -205,47 +294,60 @@
     </section>
 
     <section class="faq-section">
-      <div class="faq-container">
-        <div class="faq">
-          <h2>Часто задаваемые вопросы</h2>
-          <div class="faq-item">
-            <button class="faq-question">Что мы за сервер? <span>▼</span></button>
-            <div class="faq-answer">
-              <p>Ответ</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">Какая версия? <span>▼</span></button>
-            <div class="faq-answer">
-              <p>1.20.1</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">Нужна лицензия? <span>▼</span></button>
-            <div class="faq-answer">
-              <p>Нет, лицензия не обязательна.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">Как попасть на сервер? <span>▼</span></button>
-            <div class="faq-answer">
-              <p>Ответ</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">Почему ГусЛенд? <span>▼</span></button>
-            <div class="faq-answer">
-              <p>Ответ</p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-discord">
-          <img src="/images/discord-icon.png" alt="Discord" />
-          <h3>Есть ещё вопросы?</h3>
-          <p>Заходи к нам в <a href="https://discord.gg/rwDsBFSJrb" target="_blank">Discord!</a></p>
+    <div class="faq-left">
+      <h2>Часто задаваемые вопросы</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">Что мы за сервер? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>Ответ — (впиши свой).</p>
         </div>
       </div>
-    </section>
+
+      <div class="faq-item">
+        <button class="faq-question">Какая версия? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>1.20.1</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Нужна лицензия? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>Нет, можно играть без лицензии.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Как попасть на сервер? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>IP: 185.9.145.8:38937</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Почему ГусЛенд? <span class="arrow">▼</span></button>
+        <div class="faq-answer">
+          <p>Ответ — (впиши свой).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-discord">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Icon">
+      <h3>Есть ещё вопросы?</h3>
+      <p><a href="https://discord.gg/rwDsBFSJrb" target="_blank">Заходи к нам в Discord!</a></p>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        item.classList.toggle('active');
+      });
+    });
+  </script>
     
   </div>
 </body>
