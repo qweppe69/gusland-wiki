@@ -139,6 +139,10 @@ body {
   background-color: transparent;
   position: relative;
   z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 aside {
