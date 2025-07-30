@@ -1,134 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GusLand</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GusLand — FAQ</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('https://i.pinimg.com/1200x/51/c9/de/51c9de1f883159047ae82628dd33fb6a.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: url('https://i.pinimg.com/1200x/51/c9/de/51c9de1f883159047ae82628dd33fb6a.jpg') center/cover fixed;
       color: white;
     }
-
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      min-height: 100vh;
-      padding-bottom: 100px;
-    }
-
+    .overlay { background: rgba(0,0,0,0.6); min-height:100vh; padding-bottom:100px; }
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 80px;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px); 
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; align-items: center; padding:10px 80px;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
       font-size: 14px;
     }
-
-    header .logo {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    header .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    header nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    header nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    .main-section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 80px 20px 40px;
-      text-align: center;
-    }
-
-    .faq-layout {
-      display: flex;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
+    header .logo { display:flex; align-items:center; cursor:pointer; }
+    header .logo img { height:40px; margin-right:8px; }
+    header nav { display:flex; gap:20px; margin-left:auto; }
+    header nav a { color:white; text-decoration:none; font-size:16px; }
+    .faq-layout { display:flex; gap:2rem; max-width:1200px; margin:40px auto; padding:0 20px; }
     .faq-nav {
-      width: 220px;
-      flex-shrink: 0;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      height: fit-content;
+      flex:0 0 200px; background: rgba(255,255,255,0.05);
+      padding:1rem; border-radius:8px;
     }
-
-    .faq-nav h3 {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
+    .faq-nav a { display:block; margin-bottom:0.6rem; color:#93c5fd; text-decoration:none; }
+    .faq-nav a:hover { color:#60a5fa; }
+    .faq-content { flex:1; }
+    .faq-content h2 { font-size:1.8rem; margin-bottom:1.5rem; }
+    .faq-item { margin-bottom:1rem; border:1px solid rgba(255,255,255,0.2); border-radius:6px; background: rgba(255,255,255,0.05); overflow:hidden; }
+    .faq-item summary {
+      cursor:pointer; padding:12px; font-weight:600; list-style:none;
+      color:#fde047; font-size:1.1rem;
     }
-
-    .faq-nav a {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #93c5fd;
-      text-decoration: none;
-      font-size: 0.95rem;
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::before {
+      content:'▶'; display:inline-block; margin-right:8px; transition: transform .2s ease;
     }
-
-    .faq-nav a:hover {
-      color: #60a5fa;
-    }
-
-    .faq-content {
-      flex: 1;
-    }
-
-    .faq-content h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .faq-item {
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .faq-item strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .faq-item p {
-      margin: 0;
-      color: #ddd;
-      font-size: 0.95rem;
-    }
+    .faq-item[open] summary::before { transform: rotate(90deg); }
+    .faq-item p { padding: 0 12px 12px; margin:0; color:#ddd; font-size:0.95rem; }
   </style>
 </head>
 <body>
   <div class="overlay">
     <header>
+      <header>
       <div class="logo" onclick="window.location.href='/'">
-        <img src="/images/goose-icon.png" alt="GusLand Logo">
+        <img src="/images/goose-icon-round.png" alt="GusLand Logo">
         <span style="font-size: 24px; font-weight: bold;">GusLand</span>
       </div>
       <input type="text" placeholder="Поиск по сайту..." style="padding: 6px 10px; border-radius: 4px; border: none; width: 200px; margin-right: 150px;">
@@ -141,39 +62,50 @@
       </nav>
     </header>
 
-    <section class="faq-layout">
+    <div class="faq-layout">
       <aside class="faq-nav">
-        <h3>Навигация</h3>
-        <a href="#">ЧаВо</a>
-        <a href="#">Гайды</a>
-        <a href="#">Правила</a>
-        <a href="#">Магазин</a>
+        <a href="/info/faq.html">Частые вопросы</a>
+        <a href="/info/guide.html">Гайд</a>
+        <a href="/info/rules.html">Правила</a>
       </aside>
 
       <div class="faq-content">
-        <h2>Часто задаваемые вопросы</h2>
+        <h2>Частые Вопросы</h2>
 
-        <div class="faq-item">
-          <strong>Как зайти на сервер?</strong>
-          <p>Добавьте IP-адрес в Minecraft: <code>mc.gusland.net</code>. Поддерживаются версии 1.20+</p>
-        </div>
+        <details class="faq-item">
+          <summary>Как попасть на сервер?</summary>
+          <p>Для этого нужно зайти в наш <a href="https://discord.gg/rwDsBFSJrb" style="color:#93c5fd;">Discord</a> и подать заявку в канале <strong>#📃заявка</strong>!</p>
+          <p>После её принятия, ты сможешь зайти на наш сервер:</p>
+          <p><strong>IP: gusland.ru</strong></p>
+        </details>
 
-        <div class="faq-item">
-          <strong>Как подать заявку на вход?</strong>
-          <p>Зайдите в Discord, откройте канал "📃заявка" и заполните форму. После рассмотрения вам выдадут роль "Игрок".</p>
-        </div>
+        <details class="faq-item">
+          <summary>Какая версия сервера? Пиратка или лицензия?</summary>
+          <p>На данный момент — <strong>1.21.4 Java</strong>. Игра на Bedrock или PE невозможна и не планируется.</p>
+          <p>Играть можно как с пиратки, так и с лицензии!</p>
+        </details>
 
-        <div class="faq-item">
-          <strong>Какие моды установлены?</strong>
-          <p>На сервере используются только клиентские моды, разрешён OptiFine и миникарты. Уточняйте в Discord.</p>
-        </div>
+        <details class="faq-item">
+          <summary>Когда был вайп? Когда будет следующий?</summary>
+          <p>Каждый вайп у нас длится <strong>6 месяцев</strong>.</p>
+        </details>
 
-        <div class="faq-item">
-          <strong>Что делать при лаге или баге?</strong>
-          <p>Сообщите в технический раздел Discord или через команду <code>/report</code> в игре.</p>
-        </div>
+        <details class="faq-item">
+          <summary>Какие размеры мира?</summary>
+          <p>Обычный мир — <strong>10000 × 10000</strong>, в последствии будет расширен.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Какая валюта сервера?</summary>
+          <p><strong>АРы</strong> — глубиносланцевая алмазная руда!</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Как создать клан/город/ОПГ?</summary>
+          <p>По сути — берёшь и создаёшь! Набираешь себе людей, РП-шишь или делаешь что хочешь — и всё.</p>
+        </details>
       </div>
-    </section>
+    </div>
   </div>
 </body>
 </html>
