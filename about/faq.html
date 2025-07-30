@@ -112,7 +112,7 @@
         matches.forEach(match => {
           const snippet = match.content.length > 120 ? match.content.slice(0, 120) + '...' : match.content;
           results.innerHTML += `
-            <a href="${match.url}" role="option" class="block p-2 hover:bg-gray-800 rounded" style="color:#facc15; display:block; padding:0.5rem 1rem; text-decoration:none; border-radius:0.3rem; transition:background-color 0.3s;">
+            <a href="${match.url}" role="option" class="block p-2 hover:bg-gray-800 rounded">
               <strong style="color:#fde047;">${match.title}</strong><br>
               <span style="font-size:0.9rem; color:#ccc;">${snippet}</span>
             </a>
