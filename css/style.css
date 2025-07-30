@@ -303,10 +303,14 @@ main::-webkit-scrollbar-track {
 
 main {
   overflow: visible;
+  border: 1px solid #555;
+  border-radius: 0.5rem;
 }
 aside,
 aside.right-sidebar {
   overflow-y: auto;
+  border: 1px solid #555;
+  border-radius: 0.5rem;
 }
 html, body {
   height: 100%;
