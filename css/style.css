@@ -139,10 +139,6 @@ body {
   background-color: transparent;
   position: relative;
   z-index: 1;
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
 }
 
 aside {
@@ -299,24 +295,4 @@ main::-webkit-scrollbar-track {
     cursor: pointer;
     margin-right: 1rem;
   }
-}
-
-main {
-  overflow: visible;
-  border: 1px solid #555;
-  border-radius: 0.5rem;
-}
-aside,
-aside.right-sidebar {
-  overflow-y: auto;
-  border: 1px solid #555;
-  border-radius: 0.5rem;
-}
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-}
-body {
-  display: flex;
-  flex-direction: column;
 }
