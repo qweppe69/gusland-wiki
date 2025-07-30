@@ -4,244 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Частые вопросы | GusLand</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <style>
-    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
       background: url('https://i.pinimg.com/1200x/51/c9/de/51c9de1f883159047ae82628dd33fb6a.jpg') center/cover fixed;
-      color: white;
     }
-    .overlay {
-      background: rgba(0,0,0,0.6);
-      min-height: 100vh;
+    .bg-blur {
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
     }
-     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 380px;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px); 
-      font-size: 14px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    .logo span {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .search-box input {
-      padding: 6px 10px;
-      border: none;
-      border-radius: 4px;
-      width: 180px;
-    }
-    header nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    header nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    .faq-nav {
-      flex: 0 0 200px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    .faq-nav a {
-      display: block;
-      margin-bottom: 0.6rem;
-      color: #93c5fd;
-      text-decoration: none;
-    }
-    .faq-nav a:hover {
-      color: #60a5fa;
-    }
-    .faq-content {
-      flex: 1;
-      background: transparent;
-      padding: 0;
-    }
-    .faq-content h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-    }
-    .faq-item {
-      margin-bottom: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      overflow: hidden;
-    }
-    .faq-item summary {
-      cursor: pointer;
-      padding: 12px;
-      font-weight: 600;
-      list-style: none;
+    .content h3 {
       color: #fde047;
-      font-size: 1.1rem;
     }
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-    .faq-item summary::before {
-      content: '▶';
-      display: inline-block;
-      margin-right: 8px;
-      transition: transform 0.2s ease;
-    }
-    .faq-item[open] summary::before {
-      transform: rotate(90deg);
-    }
-    .faq-item p {
-      padding: 0 12px 12px;
-      margin: 0;
+    .content p, .content a {
       color: #ddd;
-      font-size: 0.95rem;
     }
-    /* Скроллы */
-    aside {
-      scrollbar-width: thin;
-      scrollbar-color: #facc15 transparent;
+    .content a {
+      text-decoration: underline;
+      color: #93c5fd;
     }
-    aside::-webkit-scrollbar {
-      width: 8px;
-    }
-    aside::-webkit-scrollbar-thumb {
-      background-color: #facc15;
-      border-radius: 4px;
-    }
-    aside::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    aside {
-      width: 280px;
-      background-color: rgba(30,30,30,0.5);
-      backdrop-filter: blur(8px);
-      padding: 2rem 1.5rem;
-      box-sizing: border-box;
-      border-radius: 0.5rem;
-      border: 1px solid #555;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    aside.left-sidebar {
-      width: 240px;
-      background-color: rgba(30,30,30,0.5);
-      backdrop-filter: blur(8px);
-      padding: 2rem 1.5rem;
-      box-sizing: border-box;
-      border-radius: 0.5rem;
-      border: 1px solid #555;
-      overflow-y: auto;
-      color: #ccc;
-      flex-shrink: 0;
-    }
-    aside.left-sidebar h2 {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #facc15;
-    }
-    aside.left-sidebar ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    aside.left-sidebar ul li {
-      margin-bottom: 0.5rem;
-    }
-    aside.left-sidebar ul li a {
-      color: #ccc;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    aside.left-sidebar ul li a:hover {
-      color: #fde047;
+    .content a:hover {
+      color: #60a5fa;
     }
   </style>
 </head>
-<body>
-  <div class="overlay">
-    <header>
-      <div class="logo" onclick="window.location.href='/'">
-        <img src="/images/goose-icon-round.png" alt="GusLand Logo">
-        <span style="font-size: 24px; font-weight: bold;">GusLand</span>
-      </div>
-      <input type="text" placeholder="Поиск по сайту..." style="padding: 6px 10px; border-radius: 4px; border: none; width: 200px; margin-right: 150px;">
-      <nav>
-        <a href="/about/faq.html">О сервере</a>
-        <a href="gameplay.html">Геймплей</a>
-        <a href="history.html">История сервера</a>
-        <a href="updates.html">Обновления</a>
-        <a href="https://discord.gg/rwDsBFSJrb" target="_blank">Discord</a>
-      </nav>
-    </header>
-
-    <div class="content-wrapper" style="display: flex;">
-      <aside class="left-sidebar">
-        <h2>О сервере</h2>
-        <ul>
-          <li><a href="/about/guide.html">Гайд</a></li>
-          <li><a href="/about/faq.html">Частые вопросы</a></li>
-          <li><a href="/about/rules.html">Правила</a></li>
-        </ul>
-      </aside>
-
-      <div class="faq-content">
-        <h2>Частые Вопросы</h2>
-
-        <details class="faq-item">
-          <summary>Как попасть на сервер?</summary>
-          <p>Для этого нужно зайти в наш <a href="https://discord.gg/rwDsBFSJrb" style="color:#93c5fd;">Discord</a> и подать заявку в канале <strong>#📃заявка</strong>!</p>
-          <p>После её принятия, ты сможешь зайти на наш сервер:</p>
-          <p><strong>IP: gusland.ru</strong></p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Какая версия сервера? Пиратка или лицензия?</summary>
-          <p>На данный момент — <strong>1.21.4 Java</strong>. Игра на Bedrock или PE невозможна и не планируется.</p>
-          <p>Играть можно как с пиратки, так и с лицензии!</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Когда был вайп? Когда будет следующий?</summary>
-          <p>Каждый вайп у нас длится <strong>6 месяцев</strong>.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Какие размеры мира?</summary>
-          <p>Обычный мир — <strong>10000 × 10000</strong>, в последствии будет расширен.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Какая валюта сервера?</summary>
-          <p><strong>АРы</strong> — глубиносланцевая алмазная руда!</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Как создать клан/город/ОПГ?</summary>
-          <p>По сути — берёшь и создаёшь! Набираешь себе людей, РП-шишь или делаешь что хочешь — и всё.</p>
-        </details>
-      </div>
+<body class="text-white font-sans">
+  <header class="sticky top-0 z-50 bg-black bg-opacity-80 backdrop-blur-md flex justify-between items-center px-32 py-3 text-sm">
+    <div class="flex items-center cursor-pointer" onclick="window.location.href='/'">
+      <img src="/images/goose-icon-round.png" alt="GusLand Logo" class="h-10 mr-3">
+      <span class="text-xl font-bold">GusLand</span>
     </div>
+    <input type="text" placeholder="Поиск по сайту..." class="px-3 py-1 rounded w-48 mr-32 text-black">
+    <nav class="space-x-6 text-white text-base">
+      <a href="/about/faq.html">О сервере</a>
+      <a href="/about/gameplay.html">Геймплей</a>
+      <a href="/about/history.html">История сервера</a>
+      <a href="/about/updates.html">Обновления</a>
+      <a href="https://discord.gg/rwDsBFSJrb" target="_blank">Discord</a>
+    </nav>
+  </header>
+
+  <div class="min-h-screen bg-blur py-12 px-8 md:px-32 flex space-x-10">
+    <aside class="w-64 bg-black bg-opacity-40 p-6 rounded-lg border border-gray-700 text-gray-300 flex-shrink-0">
+      <h2 class="text-yellow-400 font-bold text-lg mb-4">О сервере</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/about/guide.html" class="hover:text-yellow-300">Гайд</a></li>
+        <li><a href="/about/faq.html" class="hover:text-yellow-300">Частые вопросы</a></li>
+        <li><a href="/about/rules.html" class="hover:text-yellow-300">Правила</a></li>
+      </ul>
+    </aside>
+
+    <main class="flex-1 content space-y-10">
+      <h1 class="text-3xl font-bold mb-6 text-yellow-300">Частые вопросы</h1>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-2">Как попасть на сервер?</h3>
+        <p>Для этого нужно зайти в наш <a href="https://discord.gg/rwDsBFSJrb">Discord</a> и подать заявку в канале <strong>#📃заявка</strong>!</p>
+        <p>После её принятия, ты сможешь зайти на наш сервер:</p>
+        <p><strong>IP: gusland.ru</strong></p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-2">Какая версия сервера? Пиратка или лицензия?</h3>
+        <p>На данный момент — <strong>1.21.4 Java</strong>. Игра на Bedrock или PE невозможна и не планируется.</p>
+        <p>Играть можно как с пиратки, так и с лицензии!</p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-2">Когда был вайп? Когда будет следующий?</h3>
+        <p>Каждый вайп у нас длится <strong>6 месяцев</strong>.</p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-2">Какие размеры мира?</h3>
+        <p>Обычный мир — <strong>10000 × 10000</strong>, в последствии будет расширен.</p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-2">Какая валюта сервера?</h3>
+        <p><strong>АРы</strong> — глубиносланцевая алмазная руда!</p>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-2">Как создать клан/город/ОПГ?</h3>
+        <p>По сути — берёшь и создаёшь! Набираешь себе людей, РП-шишь или делаешь что хочешь — и всё.</p>
+      </section>
+    </main>
   </div>
 </body>
 </html>
