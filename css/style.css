@@ -300,3 +300,19 @@ main::-webkit-scrollbar-track {
     margin-right: 1rem;
   }
 }
+
+main {
+  overflow: visible;
+}
+aside,
+aside.right-sidebar {
+  overflow-y: auto;
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
