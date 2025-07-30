@@ -44,20 +44,21 @@ body {
   color: white;
   border-bottom: 1px solid #555;
 }
+
 .topbar-nav {
   display: flex;
-  gap: 1rem;
-  flex-shrink: 0;
+  gap: 1.5rem;
+  margin-left: auto;
 }
-
 .topbar-nav a {
-  color: white;
+  color: #f1f1f1;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
-
 .topbar-nav a:hover {
-  text-decoration: underline;
+  color: #facc15;
 }
 
 .logo {
