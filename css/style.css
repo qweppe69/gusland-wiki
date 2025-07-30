@@ -14,9 +14,6 @@ body {
   color: #e0e0e0;
   background: transparent;
   backdrop-filter: blur(4px);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 .topbar-container {
@@ -88,7 +85,7 @@ body {
   flex-shrink: 0;
 }
 .search-input::placeholder {
-  color: #bfa74f;
+  color: #000000;
 }
 .search-input:focus {
   outline: none;
@@ -124,10 +121,7 @@ body {
 }
 
 .content-wrapper {
-  flex-grow: 1;
   display: flex;
-  height: calc(100vh - 64px);
-  overflow: hidden;
   justify-content: center;
   padding: 2rem;
   box-sizing: border-box;
@@ -138,6 +132,9 @@ body {
 }
 
 aside {
+  position: sticky;
+  top: 64px;
+  max-height: calc(100vh - 64px);
   width: 280px;
   background-color: rgba(30,30,30,0.85);
   backdrop-filter: blur(8px);
@@ -182,7 +179,6 @@ main {
   background-color: rgba(30,30,30,0.8);
   backdrop-filter: blur(8px);
   padding: 2.5rem 3rem;
-  overflow-y: auto;
   box-sizing: border-box;
   color: #ddd;
   border-radius: 0.5rem;
