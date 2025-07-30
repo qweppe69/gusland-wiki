@@ -146,6 +146,8 @@ aside {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  height: auto;
+  flex-shrink: 0;
 }
 nav a {
   display: block;
