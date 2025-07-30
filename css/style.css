@@ -210,7 +210,14 @@ main h3 {
   margin-top: 2rem;  /* отступ снизу, чтобы отделить вопрос от текста или следующего вопроса */
   line-height: 1.4;     /* увеличенный межстрочный интервал для удобства чтения */
 }
+main a[href*="discord.gg"] {
+  color: #fff8b3; /* светло-жёлтый оттенок */
+  text-decoration: underline; /* чтобы было видно, что это ссылка */
+}
 
+main a[href*="discord.gg"]:hover {
+  color: #fde047; /* при наведении более яркий желтый */
+}
 
 aside.right-sidebar {
   width: 240px;
