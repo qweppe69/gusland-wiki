@@ -7,20 +7,29 @@
   <link href="/css/style.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="topbar-container">
-    <div class="logo" onclick="window.location.href='/'" style="cursor:pointer;">
-      <img src="/images/goose-icon-round.png" alt="Гусь" />
-      <span>GusLand</span>
-    </div>
-    <input
-      type="text"
-      placeholder="Поиск..."
-      class="search-input"
-      aria-label="Поиск по сайту"
-      autocomplete="off"
-    />
-    <div id="search-results" role="listbox" aria-label="Результаты поиска"></div>
-  </div>
+  <header class="sticky top-0 z-50 bg-black bg-opacity-80 backdrop-blur-md flex justify-between items-center px-12 py-2 h-16 text-sm border-b border-gray-700">
+    
+  <a href="/index.html" class="flex items-center space-x-3 text-white">
+    <img src="/images/goose-icon-round.png" alt="Гусь" class="h-10">
+    <span class="text-xl font-bold">GusLand</span>
+  </a>
+
+  <input
+    type="text"
+    placeholder="Поиск..."
+    class="px-3 py-1 rounded w-52 text-black"
+    aria-label="Поиск по сайту"
+    autocomplete="off"
+  />
+
+  <nav class="flex space-x-6 text-white text-base">
+    <a href="/about/faq.html" class="hover:underline">О сервере</a>
+    <a href="/about/gameplay.html" class="hover:underline">Геймплей</a>
+    <a href="/about/history.html" class="hover:underline">История сервера</a>
+    <a href="/about/updates.html" class="hover:underline">Обновления</a>
+    <a href="https://discord.gg/rwDsBFSJrb" target="_blank" class="hover:underline">Discord</a>
+  </nav>
+</header>
 
   <div class="content-wrapper">
     <aside>
