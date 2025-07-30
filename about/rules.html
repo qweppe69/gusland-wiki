@@ -58,7 +58,7 @@
     const results = document.getElementById('search-results');
     let indexData = [];
 
-    fetch('search-index.json')
+    fetch('/search-index.json')
       .then(res => res.json())
       .then(data => indexData = data)
       .catch(() => {
