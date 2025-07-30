@@ -15,7 +15,6 @@
     .overlay {
       background: rgba(0,0,0,0.6);
       min-height: 100vh;
-      padding-bottom: 100px;
     }
      header {
       position: sticky;
@@ -77,6 +76,8 @@
     }
     .faq-content {
       flex: 1;
+      background: transparent;
+      padding: 0;
     }
     .faq-content h2 {
       font-size: 1.8rem;
@@ -132,7 +133,7 @@
     }
     aside {
       width: 280px;
-      background-color: rgba(30,30,30,0.85);
+      background-color: rgba(30,30,30,0.5);
       backdrop-filter: blur(8px);
       padding: 2rem 1.5rem;
       box-sizing: border-box;
@@ -144,7 +145,7 @@
     }
     aside.left-sidebar {
       width: 240px;
-      background-color: rgba(30,30,30,0.85);
+      background-color: rgba(30,30,30,0.5);
       backdrop-filter: blur(8px);
       padding: 2rem 1.5rem;
       box-sizing: border-box;
@@ -194,14 +195,15 @@
       </nav>
     </header>
 
-    <aside class="left-sidebar">
-      <h2>О сервере</h2>
-      <ul>
-        <li><a href="/about/guide.html">Гайд</a></li>
-        <li><a href="/about/faq.html">Частые вопросы</a></li>
-        <li><a href="/about/rules.html">Правила</a></li>
-      </ul>
-    </aside>
+    <div class="content-wrapper" style="display: flex;">
+      <aside class="left-sidebar">
+        <h2>О сервере</h2>
+        <ul>
+          <li><a href="/about/guide.html">Гайд</a></li>
+          <li><a href="/about/faq.html">Частые вопросы</a></li>
+          <li><a href="/about/rules.html">Правила</a></li>
+        </ul>
+      </aside>
 
       <div class="faq-content">
         <h2>Частые Вопросы</h2>
