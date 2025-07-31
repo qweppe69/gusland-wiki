@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Частые вопросы | GusLand</title>
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <img src="/images/goose-icon-round.png" alt="Гусь" />
+      <span>GusLand</span>
+    </div>
+    <nav class="topbar-nav">
+      <a href="/about/faq.html">О сервере</a>
+      <a href="gameplay.html">Геймплей</a>
+      <a href="history.html">История сервера</a>
+      <a href="updates.html">Обновления</a>
+      <a href="https://discord.gg/rwDsBFSJrb" target="_blank">Discord</a>
+    </nav>
+    <input
+      type="text"
+      placeholder="Поиск..."
+      class="search-input"
+      aria-label="Поиск по сайту"
+      autocomplete="off"
+    />
+    <div id="search-results" role="listbox" aria-label="Результаты поиска"></div>
+  </div>
 
+  <div class="content-wrapper">
+    <aside>
+      <nav>
+        <a href="guide.html">Гайд для новичков</a>
+        <a href="faq.html" class="active">Частые вопросы</a>
+        <a href="rules.html">Правила</a>
+      </nav>
+    </aside>
+
+    <main>
+      <h1>Частые вопросы</h1>
+
+      <section id="Как-попасть-на-сервер?">
+        <h3>Как попасть на сервер?</h3>
+        <p>Чтобы попасть на сервер нужно зайти в <a href="https://discord.gg/rwDsBFSJrb" target="_blank" rel="noopener noreferrer">наш Дискорд</a> и подать заявку в канале <strong>#📃заявка</strong>!</p>
+        <p>После её принятия, ты сможешь зайти на наш сервер:</p>
+        <p><strong>IP: gusland.ru</strong></p>
+      </section>
+
+      <section id="Правила-обязательная-база!">
+        <h3>Правила - обязательная база!</h3>
+        <p>Почитай наши <a href="/about/rules.html" target="_blank" rel="noopener noreferrer">правила</a>, ведь в первые 10 часов игры ты считаешься новичком, и к тебе применимо лишь одно наказание - бан.</p>
+      </section>
+
+      <section id="Донат-:D">
+        <h3>КДонат :D</h3>
+        <p>Для болеё лёгкого, удобного и приятного геймплея советуем тебе купить Элитного Гуся - привелегия, добавляющая полезные (но балансные!) команды, ежедневный кит и красивенький префикс</p>
+        <p>Также доступны наборы обликов, киты блоков и прочее!</p>
+      </section>
+    </main>
+
+    <aside class="right-sidebar">
+      <h2>Содержание страницы</h2>
+      <ul>
+        <li><a href="#Как-попасть-на-сервер?">Как попасть на сервер?</a></li>
+        <li><a href="Правила-обязательная-база!">Правила - обязательная база!</a></li>
+        <li><a href="Донат-:D">Донат :D</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script>
+    const input = document.querySelector('.search-input');
+    const results = document.getElementById('search-results');
+    let indexData = [];
+
+    fetch('/search-index.json')
+      .then(res => res.json())
+      .then(data => indexData = data)
+      .catch(() => {
+        results.innerHTML = '<p style="padding:10px;">Ошибка загрузки данных поиска</p>';
+        results.style.display = 'block';
+      });
+
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      results.innerHTML = '';
+      results.style.display = 'none';
+
+      if (query.length < 2) return;
+
+      const matches = indexData.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query)
+      );
+
+      if (matches.length === 0) {
+        results.innerHTML = '<p style="padding:10px;">Ничего не найдено</p>';
+      } else {
+        matches.forEach(match => {
+          const snippet = match.content.length > 120 ? match.content.slice(0, 120) + '...' : match.content;
+          results.innerHTML += `
+            <a href="${match.url}" role="option" class="block p-2 hover:bg-gray-800 rounded">
+              <strong style="color:#fde047;">${match.title}</strong><br>
+              <span style="font-size:0.9rem; color:#ccc;">${snippet}</span>
+            </a>
+          `;
+        });
+      }
+      results.style.display = 'block';
+    });
+
+    document.addEventListener('click', e => {
+      if (!results.contains(e.target) && e.target !== input) {
+        results.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
