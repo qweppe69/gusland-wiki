@@ -189,11 +189,11 @@
     }
 
     .main-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      position: relative;
+      width: 100%;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      height: 100px;
     }
 
     .main-header h1 {
@@ -202,6 +202,21 @@
     }
 
     .main-header img {
+      height: 100px;
+    }
+    .centered-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 64px;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .goose-image {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
       height: 100px;
     }
 
