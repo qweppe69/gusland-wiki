@@ -301,6 +301,14 @@
       display: block;
       margin-bottom: 5px;
     }
+    
+    .faq-cards-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap; /* чтобы на узких экранах шли в столбик */
+      margin-top: 2rem;
+    }
 
     .faq-card {
       display: block;
@@ -446,17 +454,19 @@
     </div>
   </div>
 
-  <a href="https://discord.gg/rwDsBFSJrb" target="_blank" class="faq-card clickable-card">
-  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-  <h3>Есть ещё вопросы?</h3>
-  <p>Заходи к нам в Discord!</p>
-  </a>
-
-  <a href="https://www.donationalerts.com/r/bulo4k1338" target="_blank" class="faq-card clickable-card">
-  <img src="https://www.donationalerts.com/img/brand/da.svg" alt="Donate">
-  <h3>Хочешь поддержать проект?</h3>
-  <p>Задонать нам на DonationAlerts!</p>
-  </a>
+  <div class="faq-cards-row">
+    <a href="https://discord.gg/rwDsBFSJrb" target="_blank" class="faq-card clickable-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+    <h3>Есть ещё вопросы?</h3>
+    <p>Заходи к нам в Discord!</p>
+    </a>
+  
+    <a href="https://www.donationalerts.com/r/bulo4k1338" target="_blank" class="faq-card clickable-card">
+    <img src="https://www.donationalerts.com/img/brand/da.svg" alt="Donate">
+    <h3>Хочешь поддержать проект?</h3>
+    <p>Задонать нам на DonationAlerts!</p>
+    </a>
+  </div>
 </section>
 
   <script>
