@@ -58,6 +58,14 @@
       opacity: 0;
       transition: max-height 0.3s ease, opacity 0.3s ease;
     }
+    .faq-answer a[href*="discord.gg"] {
+      color: #fff8b3; /* светло-жёлтый оттенок */
+      text-decoration: underline; /* чтобы было видно, что это ссылка */
+    }
+    
+    .faq-answer a[href*="discord.gg"]:hover {
+      color: #fde047; /* при наведении более яркий желтый */
+    }
 
     .faq-item.active .faq-answer {
       max-height: 200px;
