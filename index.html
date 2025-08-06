@@ -302,7 +302,38 @@
       margin-bottom: 5px;
     }
 
-    .faq-discord {
+    .faq-card {
+      display: block;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-top: 1.5rem;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+  
+    .faq-card img {
+      width: 48px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .faq-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .faq-card p {
+      font-size: 1rem;
+    }
+    
+    .faq-card:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+/*     .faq-discord {
       margin-top: 30px;
       text-align: right;
     }
@@ -310,7 +341,7 @@
     .faq-discord a {
       color: #4ea9ff;
       text-decoration: none;
-    }
+    } */
   </style>
 </head>
 <body>
@@ -415,11 +446,17 @@
     </div>
   </div>
 
-  <div class="faq-discord" style="margin-top: 2rem;">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-    <h3>Есть ещё вопросы?</h3>
-    <p><a href="https://discord.gg/rwDsBFSJrb" target="_blank">Заходи к нам в Discord!</a></p>
-  </div>
+  <a href="https://discord.gg/rwDsBFSJrb" target="_blank" class="faq-card clickable-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+  <h3>Есть ещё вопросы?</h3>
+  <p>Заходи к нам в Discord!</p>
+  </a>
+
+  <a href="https://www.donationalerts.com/r/bulo4k1338" target="_blank" class="faq-card clickable-card">
+  <img src="https://www.donationalerts.com/img/brand/da.svg" alt="Donate">
+  <h3>Хочешь поддержать проект?</h3>
+  <p>Задонать нам на DonationAlerts!</p>
+  </a>
 </section>
 
   <script>
