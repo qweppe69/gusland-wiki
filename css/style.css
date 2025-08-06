@@ -16,7 +16,6 @@ body {
   color: #e0e0e0;
   background: transparent;
   backdrop-filter: blur(4px);
-  min-height: 200vh;
 }
 
 .topbar-container {
