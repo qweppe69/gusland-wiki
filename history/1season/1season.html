@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Правила | GusLand</title>
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <img src="/images/goose-icon-round.png" alt="Гусь" />
+      <span>GusLand</span>
+    </div>
+    <nav class="topbar-nav">
+      <a href="/about/faq.html">О сервере</a>
+      <a href="/gameplay/unique/smfeat">Геймплей</a>
+      <a href="/history/1season/1season">История сервера</a>
+      <a href="/updates/1season/1_0_0">Обновления</a>
+      <a href="https://discord.gg/rwDsBFSJrb" target="_blank">Discord</a>
+    </nav>
+    <input
+      type="text"
+      placeholder="Поиск..."
+      class="search-input"
+      aria-label="Поиск по сайту"
+      autocomplete="off"
+    />
+    <div id="search-results" role="listbox" aria-label="Результаты поиска"></div>
+  </div>
+
+  <div class="content-wrapper">
+    <aside>
+      <nav>
+        <a href="1season.html" class="active">1 сезон</a>
+        <a>В будущем...</a>
+      </nav>
+    </aside>
+
+    <main>
+      <h1>1 сезон</h1>
+       <section id="1-сезон">
+        <h3>В процессе...</h3>
+      </section>
+    </main>
+
+<!--     <aside class="right-sidebar">
+      <h2>Содержание страницы</h2>
+      <ul>
+        <li><a href="#section1">секция1</a></li>
+      </ul>
+    </aside>
+  </div> -->
+
+  <script>
+    const input = document.querySelector('.search-input');
+    const results = document.getElementById('search-results');
+    let indexData = [];
+
+    fetch('/search-index.json')
+      .then(res => res.json())
+      .then(data => indexData = data)
+      .catch(() => {
+        results.innerHTML = '<p style="padding:10px;">Ошибка загрузки данных поиска</p>';
+        results.style.display = 'block';
+      });
+
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      results.innerHTML = '';
+      results.style.display = 'none';
+
+      if (query.length < 2) return;
+
+      const matches = indexData.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query)
+      );
+
+      if (matches.length === 0) {
+        results.innerHTML = '<p style="padding:10px;">Ничего не найдено</p>';
+      } else {
+        matches.forEach(match => {
+          const snippet = match.content.length > 120 ? match.content.slice(0, 120) + '...' : match.content;
+          results.innerHTML += `
+            <a href="${match.url}" role="option" class="block p-2 hover:bg-gray-800 rounded">
+              <strong style="color:#fde047;">${match.title}</strong><br>
+              <span style="font-size:0.9rem; color:#ccc;">${snippet}</span>
+            </a>
+          `;
+        });
+      }
+      results.style.display = 'block';
+    });
+
+    document.addEventListener('click', e => {
+      if (!results.contains(e.target) && e.target !== input) {
+        results.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
